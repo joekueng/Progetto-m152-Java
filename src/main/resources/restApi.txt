@@ -1,7 +1,7 @@
 get:
-    progetto152/locations
+    progetto152/location
     progetto152/location/{location}
-    progetto152/waypoints/{location}
+    progetto152/waypoint/{location}
     progetto152/waypoint/{location}/{id}
     maybe:
         progetto152/user/{user}
