@@ -1,6 +1,6 @@
 package ch.progetto152;
 
-import ch.progetto152.controller.UserController;
+import ch.progetto152.controller.Controller;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -12,9 +12,6 @@ public class Progetto152Application {
 		SpringApplication.run(Progetto152Application.class, args);
 	}
 
-	@Bean
-	public UserController newController() {
-		return new UserController();
-	}
+
 
 }

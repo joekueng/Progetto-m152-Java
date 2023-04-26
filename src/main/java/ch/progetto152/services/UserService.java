@@ -9,7 +9,6 @@ import java.util.List;
 @Service
 public class UserService {
 
-
     public List<User> getAllUsers() {
         return null;
     }
