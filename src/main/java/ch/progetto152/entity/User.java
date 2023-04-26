@@ -1,10 +1,10 @@
 package ch.progetto152.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
 @Entity
-@Table(name = "User", schema = "Progetto152", catalog = "")
 public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

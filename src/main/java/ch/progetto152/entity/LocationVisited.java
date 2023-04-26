@@ -1,11 +1,13 @@
 package ch.progetto152.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
 @Entity
-@Table(name = "LocationVisited", schema = "Progetto152", catalog = "")
 public class LocationVisited{
+
+    @Id
     @Basic
     @Column(name = "userId")
     private int userId;
