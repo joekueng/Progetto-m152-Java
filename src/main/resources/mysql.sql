@@ -68,3 +68,7 @@ insert into Waypoints (name, lat, lon, description, img, LocationName) values ('
                                                                                'Descrizione del punto 3, un grandissimo',
                                                                                'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
                                                                                'Lugano');
+
+insert into User (name, username, password) values ('Mario Rossi', 'mario.rossi', 'password');
+insert into User (name, username, password) values ('Luca Bianchi', 'luca.bianchi', 'password');
+insert into User (name, username, password) values ('Giovanni Verdi', 'giovanni.verdi', 'password');
