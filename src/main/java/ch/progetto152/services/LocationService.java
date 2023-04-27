@@ -1,6 +1,6 @@
 package ch.progetto152.services;
 
-import ch.progetto152.entity.Location;
+import ch.progetto152.entity.LocationEntity;
 import ch.progetto152.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,24 +17,24 @@ public class LocationService {
         this.locationRepository = locationRepository;
     }
 
-    public List<Location> getAllLocations() {
+    public List<LocationEntity> getAllLocations() {
         return locationRepository.findAll();
     }
 
-    public Location getLocationByIdService(Long id) {
+    public LocationEntity getLocationByIdService(Long id) {
         return locationRepository.findById(id).orElse(null);
     }
 
-    public Location getLocationByNameService(String name){
+    public LocationEntity getLocationByNameService(String name){
         return locationRepository.findLocationByLocation(name).orElse(null);
     }
 
-    public Location createLocation(Location Location) {
+    public LocationEntity createLocation(LocationEntity Location) {
         return locationRepository.save(Location);
     }
 
-    public Location updateLocation(Long id, Location Location) {
-        Location location1 = getLocationByIdService(id);
+    public LocationEntity updateLocation(Long id, LocationEntity Location) {
+        LocationEntity location1 = getLocationByIdService(id);
         if (location1 != null) {
             location1.setLocation(Location.getLocation());
             location1.setRegion(Location.getRegion());

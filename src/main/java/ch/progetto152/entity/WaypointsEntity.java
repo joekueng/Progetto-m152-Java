@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Waypoints", schema = "Progetto152", catalog = "")
-public class Waypoints {
+public class WaypointsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -27,8 +27,8 @@ public class Waypoints {
     @Column(name = "img")
     private String img;
     @Basic
-    @Column(name = "LocationId")
-    private int locationId;
+    @Column(name = "locationName")
+    private String locationName;
 
     public int getId() {
         return id;
@@ -78,12 +78,12 @@ public class Waypoints {
         this.img = img;
     }
 
-    public int getLocationId() {
-        return locationId;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     @Override
@@ -94,12 +94,12 @@ public class Waypoints {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Waypoints that = (Waypoints) o;
-        return id == that.id && Double.compare(that.lat, lat) == 0 && Double.compare(that.lon, lon) == 0 && locationId == that.locationId && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(img, that.img);
+        WaypointsEntity that = (WaypointsEntity) o;
+        return id == that.id && Double.compare(that.lat, lat) == 0 && Double.compare(that.lon, lon) == 0 && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(img, that.img) && Objects.equals(locationName, that.locationName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lat, lon, description, img, locationId);
+        return Objects.hash(id, name, lat, lon, description, img, locationName);
     }
 }

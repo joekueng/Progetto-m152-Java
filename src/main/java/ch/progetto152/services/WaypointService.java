@@ -1,6 +1,6 @@
 package ch.progetto152.services;
 
-import ch.progetto152.entity.Waypoints;
+import ch.progetto152.entity.WaypointsEntity;
 import ch.progetto152.repository.WaypointRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,31 +16,31 @@ public class WaypointService {
         this.waypointRepository = waypointRepository;
     }
 
-    public List<Waypoints> getAllWaypoints() {
+    public List<WaypointsEntity> getAllWaypoints() {
         return waypointRepository.findAll();
     }
 
-    public Waypoints getWaypointByIdService(Long id) {
+    public WaypointsEntity getWaypointByIdService(Long id) {
         return waypointRepository.findById(id).orElse(null);
     }
 
-    public Waypoints getWaypointByNameService(String name) {
+    public WaypointsEntity getWaypointByNameService(String name) {
         return waypointRepository.findWaypointByName(name).orElse(null);
     }
 
-    public Waypoints createWaypoint(Waypoints waypoint) {
+    public WaypointsEntity createWaypoint(WaypointsEntity waypoint) {
         return waypointRepository.save(waypoint);
     }
 
-    public Waypoints updateWaypoint(Long id, Waypoints waypoint) {
-        Waypoints waypoint1 = getWaypointByIdService(id);
+    public WaypointsEntity updateWaypoint(Long id, WaypointsEntity waypoint) {
+        WaypointsEntity waypoint1 = getWaypointByIdService(id);
         if (waypoint1 != null) {
             waypoint1.setName(waypoint.getName());
             waypoint1.setLat(waypoint.getLat());
             waypoint1.setLon(waypoint.getLon());
             waypoint1.setDescription(waypoint.getDescription());
             waypoint1.setImg(waypoint.getImg());
-            waypoint1.setLocationId(waypoint.getLocationId());
+            waypoint1.setLocationName(waypoint.getLocationName());
 
             return waypointRepository.save(waypoint1);
         } else {

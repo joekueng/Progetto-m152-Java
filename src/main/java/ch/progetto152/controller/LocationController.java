@@ -1,6 +1,6 @@
 package ch.progetto152.controller;
 
-import ch.progetto152.entity.Location;
+import ch.progetto152.entity.LocationEntity;
 import ch.progetto152.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,14 +20,14 @@ public class LocationController {
     }
 
     @GetMapping("/get/all")
-    public ResponseEntity<List<Location>> getAllLocations() {
-        List<Location> Locations = locationService.getAllLocations();
+    public ResponseEntity<List<LocationEntity>> getAllLocations() {
+        List<LocationEntity> Locations = locationService.getAllLocations();
         return new ResponseEntity<>(Locations, HttpStatus.OK);
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Location> getLocationById(@PathVariable("id") Long id) {
-        Location location = locationService.getLocationByIdService(id);
+    public ResponseEntity<LocationEntity> getLocationById(@PathVariable("id") Long id) {
+        LocationEntity location = locationService.getLocationByIdService(id);
         if (location != null) {
             return new ResponseEntity<>(location, HttpStatus.OK);
         } else {
@@ -36,8 +36,8 @@ public class LocationController {
     }
 
     @GetMapping("/get/name/{name}")
-    public ResponseEntity<Location> getLocationByName(@PathVariable("name") String name) {
-        Location location = locationService.getLocationByNameService(name);
+    public ResponseEntity<LocationEntity> getLocationByName(@PathVariable("name") String name) {
+        LocationEntity location = locationService.getLocationByNameService(name);
         if (location != null) {
             return new ResponseEntity<>(location, HttpStatus.OK);
         } else {
@@ -46,14 +46,14 @@ public class LocationController {
     }
 
     @PostMapping("/create/{id}")
-    public ResponseEntity<Location> createLocation(@RequestBody Location location) {
-        Location createdLocation = locationService.createLocation(location);
+    public ResponseEntity<LocationEntity> createLocation(@RequestBody LocationEntity location) {
+        LocationEntity createdLocation = locationService.createLocation(location);
         return new ResponseEntity<>(createdLocation, HttpStatus.CREATED);
     }
 
     @PutMapping("/put/{id}")
-    public ResponseEntity<Location> updateLocation(@PathVariable("id") Long id, @RequestBody Location location) {
-        Location location1 = locationService.updateLocation(id, location);
+    public ResponseEntity<LocationEntity> updateLocation(@PathVariable("id") Long id, @RequestBody LocationEntity location) {
+        LocationEntity location1 = locationService.updateLocation(id, location);
         if (location1 != null) {
             return new ResponseEntity<>(location1, HttpStatus.OK);
         } else {

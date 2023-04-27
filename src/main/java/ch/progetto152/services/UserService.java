@@ -1,7 +1,7 @@
 package ch.progetto152.services;
 
 
-import ch.progetto152.entity.User;
+import ch.progetto152.entity.UserEntity;
 import ch.progetto152.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,28 +18,28 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getAllUsers() {
+    public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public User getUserByIdService(Long id) {
+    public UserEntity getUserByIdService(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User getUserByNameService(String name){
+    public UserEntity getUserByNameService(String name){
         return userRepository.findUserByName(name).orElse(null);
     }
 
-    public User getUserByUsernameService(String username){
+    public UserEntity getUserByUsernameService(String username){
         return userRepository.findUserByUsername(username).orElse(null);
     }
 
-    public User createUser(User user) {
+    public UserEntity createUser(UserEntity user) {
         return userRepository.save(user);
     }
 
-    public User updateUser(Long id, User user) {
-        User user1 = getUserByIdService(id);
+    public UserEntity updateUser(Long id, UserEntity user) {
+        UserEntity user1 = getUserByIdService(id);
         if (user1 != null) {
             user1.setName(user.getName());
             user1.setUsername(user.getUsername());

@@ -1,6 +1,6 @@
 package ch.progetto152.controller;
 
-import ch.progetto152.entity.Waypoints;
+import ch.progetto152.entity.WaypointsEntity;
 import ch.progetto152.services.WaypointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,14 +20,14 @@ public class WaypointController {
     }
 
     @GetMapping("/get/all")
-    public ResponseEntity<List<Waypoints>> getAllWaypoints() {
-        List<Waypoints> waypoint = waypointService.getAllWaypoints();
+    public ResponseEntity<List<WaypointsEntity>> getAllWaypoints() {
+        List<WaypointsEntity> waypoint = waypointService.getAllWaypoints();
         return new ResponseEntity<>(waypoint, HttpStatus.OK);
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Waypoints> getWaypointById(@PathVariable("id") Long id) {
-        Waypoints waypoint = waypointService.getWaypointByIdService(id);
+    public ResponseEntity<WaypointsEntity> getWaypointById(@PathVariable("id") Long id) {
+        WaypointsEntity waypoint = waypointService.getWaypointByIdService(id);
         if (waypoint != null) {
             return new ResponseEntity<>(waypoint, HttpStatus.OK);
         } else {
@@ -36,8 +36,8 @@ public class WaypointController {
     }
 
     @GetMapping("/get/name/{name}")
-    public ResponseEntity<Waypoints> getWaypointByName(@PathVariable("name") String name) {
-        Waypoints waypoint = waypointService.getWaypointByNameService(name);
+    public ResponseEntity<WaypointsEntity> getWaypointByName(@PathVariable("name") String name) {
+        WaypointsEntity waypoint = waypointService.getWaypointByNameService(name);
         if (waypoint != null) {
             return new ResponseEntity<>(waypoint, HttpStatus.OK);
         } else {
@@ -46,14 +46,14 @@ public class WaypointController {
     }
 
     @PostMapping("/create/{id}")
-    public ResponseEntity<Waypoints> createWaypoint(@RequestBody Waypoints waypoint) {
-        Waypoints createdWaypoint = waypointService.createWaypoint(waypoint);
+    public ResponseEntity<WaypointsEntity> createWaypoint(@RequestBody WaypointsEntity waypoint) {
+        WaypointsEntity createdWaypoint = waypointService.createWaypoint(waypoint);
         return new ResponseEntity<>(createdWaypoint, HttpStatus.CREATED);
     }
 
     @PutMapping("/put/{id}")
-    public ResponseEntity<Waypoints> updateWaypoint(@PathVariable("id") Long id, @RequestBody Waypoints waypoint) {
-        Waypoints updatedWaypoint = waypointService.updateWaypoint(id, waypoint);
+    public ResponseEntity<WaypointsEntity> updateWaypoint(@PathVariable("id") Long id, @RequestBody WaypointsEntity waypoint) {
+        WaypointsEntity updatedWaypoint = waypointService.updateWaypoint(id, waypoint);
         if (updatedWaypoint != null) {
             return new ResponseEntity<>(updatedWaypoint, HttpStatus.OK);
         } else {

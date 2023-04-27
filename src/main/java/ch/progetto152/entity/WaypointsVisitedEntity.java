@@ -5,17 +5,16 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class LocationVisited{
-
-    @Id
+@Table(name = "WaypointsVisited", schema = "Progetto152", catalog = "")
+public class WaypointsVisitedEntity {
     @Basic
+    @Id
     @Column(name = "userId")
     private int userId;
     @Basic
-    @Column(name = "locationid")
-    private int locationid;
     @Id
-    private Long id;
+    @Column(name = "waypointId")
+    private int waypointId;
 
     public int getUserId() {
         return userId;
@@ -25,12 +24,12 @@ public class LocationVisited{
         this.userId = userId;
     }
 
-    public int getLocationid() {
-        return locationid;
+    public int getWaypointId() {
+        return waypointId;
     }
 
-    public void setLocationid(int locationid) {
-        this.locationid = locationid;
+    public void setWaypointId(int waypointId) {
+        this.waypointId = waypointId;
     }
 
     @Override
@@ -41,21 +40,12 @@ public class LocationVisited{
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        LocationVisited that = (LocationVisited) o;
-        return userId == that.userId && locationid == that.locationid;
+        WaypointsVisitedEntity that = (WaypointsVisitedEntity) o;
+        return userId == that.userId && waypointId == that.waypointId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, locationid);
+        return Objects.hash(userId, waypointId);
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
 }

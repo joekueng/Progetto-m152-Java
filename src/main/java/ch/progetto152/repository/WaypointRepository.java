@@ -1,11 +1,11 @@
 package ch.progetto152.repository;
 
-import ch.progetto152.entity.Waypoints;
+import ch.progetto152.entity.WaypointsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface WaypointRepository extends JpaRepository<Waypoints, Long> {
+public interface WaypointRepository extends JpaRepository<WaypointsEntity, Long> {
 
-    Optional<Waypoints> findWaypointByName(String name);
+    Optional<WaypointsEntity> findWaypointByName(String name);
 }

@@ -1,7 +1,7 @@
 package ch.progetto152.controller;
 
 
-import ch.progetto152.entity.User;
+import ch.progetto152.entity.UserEntity;
 import ch.progetto152.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,6 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
-
     private final UserService userService;
 
     @Autowired
@@ -23,14 +22,14 @@ public class UserController {
     }
 
     @GetMapping("/get/all")
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.getAllUsers();
+    public ResponseEntity<List<UserEntity>> getAllUsers() {
+        List<UserEntity> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
-        User user = userService.getUserByIdService(id);
+    public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long id) {
+        UserEntity user = userService.getUserByIdService(id);
         if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
@@ -39,8 +38,8 @@ public class UserController {
     }
 
     @GetMapping("/get/name/{name}")
-    public ResponseEntity<User> getUserByName(@PathVariable("name") String name) {
-        User user = userService.getUserByNameService(name);
+    public ResponseEntity<UserEntity> getUserByName(@PathVariable("name") String name) {
+        UserEntity user = userService.getUserByNameService(name);
         if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
@@ -49,8 +48,8 @@ public class UserController {
     }
 
     @GetMapping("/get/username/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
-        User user = userService.getUserByUsernameService(username);
+    public ResponseEntity<UserEntity> getUserByUsername(@PathVariable("username") String username) {
+        UserEntity user = userService.getUserByUsernameService(username);
         if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
@@ -59,14 +58,14 @@ public class UserController {
     }
 
     @PostMapping("/create/{id}")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User createdUser = userService.createUser(user);
+    public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
+        UserEntity createdUser = userService.createUser(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/put/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-        User updatedUser = userService.updateUser(id, user);
+    public ResponseEntity<UserEntity> updateUser(@PathVariable("id") Long id, @RequestBody UserEntity user) {
+        UserEntity updatedUser = userService.updateUser(id, user);
         if (updatedUser != null) {
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         } else {
