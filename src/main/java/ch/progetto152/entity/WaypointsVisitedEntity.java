@@ -3,8 +3,8 @@ package ch.progetto152.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Objects;
-
 @Entity
 @Getter
 @Setter
@@ -12,12 +12,11 @@ import java.util.Objects;
 @AllArgsConstructor
 @ToString
 @Table(name = "WaypointsVisited", schema = "Progetto152", catalog = "")
+@IdClass(WaypointsVisitedId.class)
 public class WaypointsVisitedEntity {
-    @Basic
     @Id
     @Column(name = "userId")
     private int userId;
-    @Basic
     @Id
     @Column(name = "waypointId")
     private int waypointId;
@@ -38,4 +37,9 @@ public class WaypointsVisitedEntity {
     public int hashCode() {
         return Objects.hash(userId, waypointId);
     }
+}
+
+class WaypointsVisitedId implements Serializable {
+    private int userId;
+    private int waypointId;
 }
