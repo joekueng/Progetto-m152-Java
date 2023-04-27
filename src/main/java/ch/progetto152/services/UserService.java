@@ -30,6 +30,10 @@ public class UserService {
         return userRepository.findUserByName(name).orElse(null);
     }
 
+    public User getUserByUsernameService(String username){
+        return userRepository.findUserByUsername(username).orElse(null);
+    }
+
     public User createUser(User user) {
         return userRepository.save(user);
     }
