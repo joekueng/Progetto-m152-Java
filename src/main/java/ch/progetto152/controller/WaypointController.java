@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/waypoints")
+@RequestMapping("/progetto152/waypoints")
 public class WaypointController {
     private final WaypointService waypointService;
 
@@ -19,13 +19,13 @@ public class WaypointController {
         this.waypointService = waypointService;
     }
 
-    @GetMapping("/get/all")
+    @GetMapping("")
     public ResponseEntity<List<WaypointsEntity>> getAllWaypoints() {
         List<WaypointsEntity> waypoint = waypointService.getAllWaypoints();
         return new ResponseEntity<>(waypoint, HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<WaypointsEntity> getWaypointById(@PathVariable("id") Long id) {
         WaypointsEntity waypoint = waypointService.getWaypointById(id);
         if (waypoint != null) {
@@ -35,7 +35,7 @@ public class WaypointController {
         }
     }
 
-    @GetMapping("/get/name/{name}")
+    @GetMapping("?name={name}")
     public ResponseEntity<WaypointsEntity> getWaypointByName(@PathVariable("name") String name) {
         WaypointsEntity waypoint = waypointService.getWaypointByName(name);
         if (waypoint != null) {
@@ -45,13 +45,13 @@ public class WaypointController {
         }
     }
 
-    @PostMapping("/create/{id}")
+    @PostMapping("")
     public ResponseEntity<WaypointsEntity> createWaypoint(@RequestBody WaypointsEntity waypoint) {
         WaypointsEntity createdWaypoint = waypointService.createWaypoint(waypoint);
         return new ResponseEntity<>(createdWaypoint, HttpStatus.CREATED);
     }
 
-    @PutMapping("/put/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<WaypointsEntity> updateWaypoint(@PathVariable("id") Long id, @RequestBody WaypointsEntity waypoint) {
         WaypointsEntity updatedWaypoint = waypointService.updateWaypoint(id, waypoint);
         if (updatedWaypoint != null) {
@@ -61,7 +61,7 @@ public class WaypointController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteWaypoint(@PathVariable("id") Long id) {
         boolean deleted = waypointService.deleteWaypoint(id);
         if (deleted) {

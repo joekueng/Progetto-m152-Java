@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/progetto152/waypointsvisited")
 public class WaypointVisitedController {
     private final WaypointVisitedService waypointVisitedService;
 
@@ -19,13 +19,13 @@ public class WaypointVisitedController {
         this.waypointVisitedService = waypointVisitedService;
     }
 
-    @GetMapping("/get/all")
+    @GetMapping("")
     public ResponseEntity<List<WaypointsVisitedEntity>> getAllWaypointsVisited() {
         List<WaypointsVisitedEntity> waypointVisited = waypointVisitedService.getAllWaypointsVisited();
         return new ResponseEntity<>(waypointVisited, HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<WaypointsVisitedEntity> getWaypointVisitedById(@PathVariable("id") Long id) {
         WaypointsVisitedEntity waypointVisited = waypointVisitedService.getWaypointById(id);
         if (waypointVisited != null) {
@@ -35,7 +35,7 @@ public class WaypointVisitedController {
         }
     }
 
-    @GetMapping("/get/name/{id}")
+    @GetMapping("?userid={id}")
     public ResponseEntity<WaypointsVisitedEntity> getWaypointVisitedByUserId(@PathVariable("id") Long id) {
         WaypointsVisitedEntity waypointVisited = waypointVisitedService.getWaypointsVisitedByUserId(id);
         if (waypointVisited != null) {
@@ -45,7 +45,7 @@ public class WaypointVisitedController {
         }
     }
 
-    @GetMapping("/get/name/{id}")
+    @GetMapping("?waypointid={id}")
     public ResponseEntity<WaypointsVisitedEntity> getWaypointVisitedByWaypointId(@PathVariable("id") Long id) {
         WaypointsVisitedEntity waypointVisited = waypointVisitedService.getWaypointsVisitedByWaypointId(id);
         if (waypointVisited != null) {
@@ -55,13 +55,13 @@ public class WaypointVisitedController {
         }
     }
 
-    @PostMapping("/create/{id}")
+    @PostMapping("")
     public ResponseEntity<WaypointsVisitedEntity> createWaypointVisited(@RequestBody WaypointsVisitedEntity waypointVisited) {
         WaypointsVisitedEntity createdWaypoint = waypointVisitedService.createWaypoint(waypointVisited);
         return new ResponseEntity<>(createdWaypoint, HttpStatus.CREATED);
     }
 
-    @PutMapping("/put/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<WaypointsVisitedEntity> updateWaypointVisited(@PathVariable("id") Long id, @RequestBody WaypointsVisitedEntity waypointVisited) {
         WaypointsVisitedEntity updatedWaypoint = waypointVisitedService.updateWaypoint(id, waypointVisited);
         if (updatedWaypoint != null) {
@@ -71,7 +71,7 @@ public class WaypointVisitedController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteWaypointVisited(@PathVariable("id") Long id) {
         boolean deleted = waypointVisitedService.deleteWaypoint(id);
         if (deleted) {

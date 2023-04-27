@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/progetto152/users")
 public class UserController {
 
     private final UserService userService;
@@ -21,13 +21,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/get/all")
+    @GetMapping("")
     public ResponseEntity<List<UserEntity>> getAllUsers() {
         List<UserEntity> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long id) {
         UserEntity user = userService.getUserById(id);
         if (user != null) {
@@ -37,7 +37,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/get/name/{name}")
+    @GetMapping("?name={name}")
     public ResponseEntity<UserEntity> getUserByName(@PathVariable("name") String name) {
         UserEntity user = userService.getUserByName(name);
         if (user != null) {
@@ -47,7 +47,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/get/username/{username}")
+    @GetMapping("?username={username}")
     public ResponseEntity<UserEntity> getUserByUsername(@PathVariable("username") String username) {
         UserEntity user = userService.getUserByUsername(username);
         if (user != null) {
@@ -57,13 +57,13 @@ public class UserController {
         }
     }
 
-    @PostMapping("/create/{id}")
+    @PostMapping("")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
         UserEntity createdUser = userService.createUser(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    @PutMapping("/put/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<UserEntity> updateUser(@PathVariable("id") Long id, @RequestBody UserEntity user) {
         UserEntity updatedUser = userService.updateUser(id, user);
         if (updatedUser != null) {
@@ -73,7 +73,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         boolean deleted = userService.deleteUser(id);
         if (deleted) {
