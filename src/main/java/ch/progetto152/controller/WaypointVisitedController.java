@@ -58,6 +58,9 @@ public class WaypointVisitedController {
     @PostMapping("")
     public ResponseEntity<WaypointsVisitedEntity> createWaypointVisited(@RequestBody WaypointsVisitedEntity waypointVisited) {
         WaypointsVisitedEntity createdWaypoint = waypointVisitedService.createWaypoint(waypointVisited);
+        if(createdWaypoint == null) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity<>(createdWaypoint, HttpStatus.CREATED);
     }
 

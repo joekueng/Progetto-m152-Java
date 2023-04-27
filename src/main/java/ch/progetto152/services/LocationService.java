@@ -2,6 +2,7 @@ package ch.progetto152.services;
 
 import ch.progetto152.entity.LocationEntity;
 import ch.progetto152.repository.LocationRepository;
+import ch.progetto152.utility.ErrorChecking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Service
 public class LocationService {
 
+    private ErrorChecking errorChecking = new ErrorChecking();
     private final LocationRepository locationRepository;
 
     @Autowired
@@ -30,7 +32,11 @@ public class LocationService {
     }
 
     public LocationEntity createLocation(LocationEntity Location) {
-        return locationRepository.save(Location);
+        if(errorChecking.checkLocation(Location)) {
+            return locationRepository.save(Location);
+        } else {
+            return null;
+        }
     }
 
     public LocationEntity updateLocation(Long id, LocationEntity Location) {

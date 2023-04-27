@@ -48,6 +48,9 @@ public class WaypointController {
     @PostMapping("")
     public ResponseEntity<WaypointsEntity> createWaypoint(@RequestBody WaypointsEntity waypoint) {
         WaypointsEntity createdWaypoint = waypointService.createWaypoint(waypoint);
+        if (createdWaypoint == null) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity<>(createdWaypoint, HttpStatus.CREATED);
     }
 

@@ -3,6 +3,7 @@ package ch.progetto152.services;
 
 import ch.progetto152.entity.UserEntity;
 import ch.progetto152.repository.UserRepository;
+import ch.progetto152.utility.ErrorChecking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Service
 public class UserService {
 
+    ErrorChecking errorChecking = new ErrorChecking();
     private final UserRepository userRepository;
 
     @Autowired
@@ -35,7 +37,11 @@ public class UserService {
     }
 
     public UserEntity createUser(UserEntity user) {
-        return userRepository.save(user);
+        if(errorChecking.checkUser(user)) {
+            return userRepository.save(user);
+        } else {
+            return null;
+        }
     }
 
     public UserEntity updateUser(Long id, UserEntity user) {

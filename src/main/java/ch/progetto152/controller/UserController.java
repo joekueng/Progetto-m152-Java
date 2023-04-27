@@ -60,6 +60,9 @@ public class UserController {
     @PostMapping("")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
         UserEntity createdUser = userService.createUser(user);
+        if(createdUser == null) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 

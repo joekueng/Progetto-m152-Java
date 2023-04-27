@@ -48,6 +48,9 @@ public class LocationController {
     @PostMapping("")
     public ResponseEntity<LocationEntity> createLocation(@RequestBody LocationEntity location) {
         LocationEntity createdLocation = locationService.createLocation(location);
+        if(createdLocation == null) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity<>(createdLocation, HttpStatus.CREATED);
     }
 

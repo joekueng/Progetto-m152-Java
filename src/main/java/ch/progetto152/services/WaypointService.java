@@ -2,6 +2,7 @@ package ch.progetto152.services;
 
 import ch.progetto152.entity.WaypointsEntity;
 import ch.progetto152.repository.WaypointRepository;
+import ch.progetto152.utility.ErrorChecking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,8 @@ import java.util.List;
 
 @Service
 public class WaypointService {
+
+    ErrorChecking errorChecking = new ErrorChecking();
     private final WaypointRepository waypointRepository;
 
     @Autowired
@@ -29,7 +32,10 @@ public class WaypointService {
     }
 
     public WaypointsEntity createWaypoint(WaypointsEntity waypoint) {
-        return waypointRepository.save(waypoint);
+        if (errorChecking.checkWaypoint(waypoint)) {
+            return waypointRepository.save(waypoint);
+        }
+        return null;
     }
 
     public WaypointsEntity updateWaypoint(Long id, WaypointsEntity waypoint) {
