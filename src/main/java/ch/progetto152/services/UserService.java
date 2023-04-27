@@ -2,6 +2,8 @@ package ch.progetto152.services;
 
 
 import ch.progetto152.entity.User;
+import ch.progetto152.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +11,16 @@ import java.util.List;
 @Service
 public class UserService {
 
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     public List<User> getAllUsers() {
-        return null;
+        System.out.println(userRepository.findAll());
+        return userRepository.findAll();
     }
 
     public User getUserByIdService(Long id) {
@@ -18,7 +28,7 @@ public class UserService {
     }
 
     public User createUser(User user) {
-        return null;
+        return userRepository.save(user);
     }
 
     public User updateUser(Long id, User user) {

@@ -19,26 +19,26 @@ import java.util.List;
 @RequestMapping(value = "api/progetto152", produces = MediaType.APPLICATION_JSON_VALUE)
 public class Controller {
 
-    private static final String location = "location";
-    private static final String waypoint = "waypoint";
+    private static final String location1 = "location";
+    private static final String waypoint1 = "waypoint";
 
     @Autowired
     private UserService userService;
 
 
-    @GetMapping(value= location, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value= location1, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Location>> getLocations() {
         List<Location> locations = LocationService.getLocations();
         return new ResponseEntity<>(locations, HttpStatus.OK);
     }
 
-    @GetMapping(value= waypoint, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value= waypoint1, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Waypoints>> getWaypoints() {
         List<Waypoints> waypoints = WaypointService.getWaypoints();
         return new ResponseEntity<>(waypoints, HttpStatus.OK);
     }
 
-    @PostMapping(value= location, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value= location1, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createLocation(@RequestBody Location location) {
         LocationService.createLocation(location);
         return new ResponseEntity<>(HttpStatus.CREATED);
