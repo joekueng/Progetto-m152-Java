@@ -20,11 +20,11 @@ public class WaypointService {
         return waypointRepository.findAll();
     }
 
-    public WaypointsEntity getWaypointByIdService(Long id) {
+    public WaypointsEntity getWaypointById(Long id) {
         return waypointRepository.findById(id).orElse(null);
     }
 
-    public WaypointsEntity getWaypointByNameService(String name) {
+    public WaypointsEntity getWaypointByName(String name) {
         return waypointRepository.findWaypointByName(name).orElse(null);
     }
 
@@ -33,7 +33,7 @@ public class WaypointService {
     }
 
     public WaypointsEntity updateWaypoint(Long id, WaypointsEntity waypoint) {
-        WaypointsEntity waypoint1 = getWaypointByIdService(id);
+        WaypointsEntity waypoint1 = getWaypointById(id);
         if (waypoint1 != null) {
             waypoint1.setName(waypoint.getName());
             waypoint1.setLat(waypoint.getLat());

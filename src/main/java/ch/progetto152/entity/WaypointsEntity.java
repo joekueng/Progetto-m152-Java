@@ -1,10 +1,16 @@
 package ch.progetto152.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table(name = "Waypoints", schema = "Progetto152", catalog = "")
 public class WaypointsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,59 +36,12 @@ public class WaypointsEntity {
     @Column(name = "locationName")
     private String locationName;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public WaypointsEntity(String name, double lat, double lon, String description, String img, String locationName) {
         this.name = name;
-    }
-
-    public double getLat() {
-        return lat;
-    }
-
-    public void setLat(double lat) {
         this.lat = lat;
-    }
-
-    public double getLon() {
-        return lon;
-    }
-
-    public void setLon(double lon) {
         this.lon = lon;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
         this.img = img;
-    }
-
-    public String getLocationName() {
-        return locationName;
-    }
-
-    public void setLocationName(String locationName) {
         this.locationName = locationName;
     }
 

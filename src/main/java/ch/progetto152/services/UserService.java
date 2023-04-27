@@ -22,15 +22,15 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public UserEntity getUserByIdService(Long id) {
+    public UserEntity getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public UserEntity getUserByNameService(String name){
+    public UserEntity getUserByName(String name){
         return userRepository.findUserByName(name).orElse(null);
     }
 
-    public UserEntity getUserByUsernameService(String username){
+    public UserEntity getUserByUsername(String username){
         return userRepository.findUserByUsername(username).orElse(null);
     }
 
@@ -39,7 +39,7 @@ public class UserService {
     }
 
     public UserEntity updateUser(Long id, UserEntity user) {
-        UserEntity user1 = getUserByIdService(id);
+        UserEntity user1 = getUserById(id);
         if (user1 != null) {
             user1.setName(user.getName());
             user1.setUsername(user.getUsername());

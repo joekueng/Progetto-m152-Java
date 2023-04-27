@@ -21,11 +21,11 @@ public class LocationService {
         return locationRepository.findAll();
     }
 
-    public LocationEntity getLocationByIdService(Long id) {
+    public LocationEntity getLocationById(Long id) {
         return locationRepository.findById(id).orElse(null);
     }
 
-    public LocationEntity getLocationByNameService(String name){
+    public LocationEntity getLocationByName(String name){
         return locationRepository.findLocationByLocation(name).orElse(null);
     }
 
@@ -34,7 +34,7 @@ public class LocationService {
     }
 
     public LocationEntity updateLocation(Long id, LocationEntity Location) {
-        LocationEntity location1 = getLocationByIdService(id);
+        LocationEntity location1 = getLocationById(id);
         if (location1 != null) {
             location1.setLocation(Location.getLocation());
             location1.setRegion(Location.getRegion());

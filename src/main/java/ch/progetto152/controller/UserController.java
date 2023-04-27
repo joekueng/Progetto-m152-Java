@@ -29,7 +29,7 @@ public class UserController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long id) {
-        UserEntity user = userService.getUserByIdService(id);
+        UserEntity user = userService.getUserById(id);
         if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
@@ -39,7 +39,7 @@ public class UserController {
 
     @GetMapping("/get/name/{name}")
     public ResponseEntity<UserEntity> getUserByName(@PathVariable("name") String name) {
-        UserEntity user = userService.getUserByNameService(name);
+        UserEntity user = userService.getUserByName(name);
         if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
@@ -49,7 +49,7 @@ public class UserController {
 
     @GetMapping("/get/username/{username}")
     public ResponseEntity<UserEntity> getUserByUsername(@PathVariable("username") String username) {
-        UserEntity user = userService.getUserByUsernameService(username);
+        UserEntity user = userService.getUserByUsername(username);
         if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {

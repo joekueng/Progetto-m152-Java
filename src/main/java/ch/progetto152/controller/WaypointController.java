@@ -27,7 +27,7 @@ public class WaypointController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<WaypointsEntity> getWaypointById(@PathVariable("id") Long id) {
-        WaypointsEntity waypoint = waypointService.getWaypointByIdService(id);
+        WaypointsEntity waypoint = waypointService.getWaypointById(id);
         if (waypoint != null) {
             return new ResponseEntity<>(waypoint, HttpStatus.OK);
         } else {
@@ -37,7 +37,7 @@ public class WaypointController {
 
     @GetMapping("/get/name/{name}")
     public ResponseEntity<WaypointsEntity> getWaypointByName(@PathVariable("name") String name) {
-        WaypointsEntity waypoint = waypointService.getWaypointByNameService(name);
+        WaypointsEntity waypoint = waypointService.getWaypointByName(name);
         if (waypoint != null) {
             return new ResponseEntity<>(waypoint, HttpStatus.OK);
         } else {

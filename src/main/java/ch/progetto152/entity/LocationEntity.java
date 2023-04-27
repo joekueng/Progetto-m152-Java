@@ -1,10 +1,16 @@
 package ch.progetto152.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table(name = "Location", schema = "Progetto152", catalog = "")
 public class LocationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,38 +26,6 @@ public class LocationEntity {
     @Basic
     @Column(name = "lon")
     private double lon;
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public double getLat() {
-        return lat;
-    }
-
-    public void setLat(double lat) {
-        this.lat = lat;
-    }
-
-    public double getLon() {
-        return lon;
-    }
-
-    public void setLon(double lon) {
-        this.lon = lon;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -27,7 +27,7 @@ public class LocationController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<LocationEntity> getLocationById(@PathVariable("id") Long id) {
-        LocationEntity location = locationService.getLocationByIdService(id);
+        LocationEntity location = locationService.getLocationById(id);
         if (location != null) {
             return new ResponseEntity<>(location, HttpStatus.OK);
         } else {
@@ -37,7 +37,7 @@ public class LocationController {
 
     @GetMapping("/get/name/{name}")
     public ResponseEntity<LocationEntity> getLocationByName(@PathVariable("name") String name) {
-        LocationEntity location = locationService.getLocationByNameService(name);
+        LocationEntity location = locationService.getLocationByName(name);
         if (location != null) {
             return new ResponseEntity<>(location, HttpStatus.OK);
         } else {

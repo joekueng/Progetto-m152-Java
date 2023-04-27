@@ -1,10 +1,16 @@
 package ch.progetto152.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table(name = "WaypointsVisited", schema = "Progetto152", catalog = "")
 public class WaypointsVisitedEntity {
     @Basic
@@ -15,22 +21,6 @@ public class WaypointsVisitedEntity {
     @Id
     @Column(name = "waypointId")
     private int waypointId;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getWaypointId() {
-        return waypointId;
-    }
-
-    public void setWaypointId(int waypointId) {
-        this.waypointId = waypointId;
-    }
 
     @Override
     public boolean equals(Object o) {
