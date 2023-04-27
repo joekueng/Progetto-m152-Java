@@ -19,12 +19,15 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        System.out.println(userRepository.findAll());
         return userRepository.findAll();
     }
 
     public User getUserByIdService(Long id) {
-        return null;
+        return userRepository.findById(id).orElse(null);
+    }
+
+    public User getUserByNameService(String name){
+        return userRepository.findUserByName(name).orElse(null);
     }
 
     public User createUser(User user) {
@@ -32,10 +35,23 @@ public class UserService {
     }
 
     public User updateUser(Long id, User user) {
-        return null;
+        User user1 = getUserByIdService(id);
+        if (user1 != null) {
+            user1.setName(user.getName());
+            user1.setUsername(user.getUsername());
+            user1.setPassword(user.getPassword());
+            return userRepository.save(user1);
+        } else {
+            return null;
+        }
     }
 
     public boolean deleteUser(Long id) {
-        return false;
+        boolean exists = userRepository.existsById(id);
+        if(!exists){
+            return false;
+        }
+        userRepository.deleteById(id);
+        return true;
     }
 }

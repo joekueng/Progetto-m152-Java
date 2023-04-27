@@ -38,6 +38,16 @@ public class UserController {
         }
     }
 
+    @GetMapping("/get/name/{name}")
+    public ResponseEntity<User> getUserByName(@PathVariable("name") String name) {
+        User user = userService.getUserByNameService(name);
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping("/create/{id}")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User createdUser = userService.createUser(user);
