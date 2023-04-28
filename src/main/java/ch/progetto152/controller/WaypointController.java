@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/progetto152/waypoints")
+@RequestMapping("/progetto152/waypoint")
 public class WaypointController {
     private final WaypointService waypointService;
 
@@ -19,25 +19,29 @@ public class WaypointController {
         this.waypointService = waypointService;
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<WaypointsEntity>> getAllWaypoints() {
-        List<WaypointsEntity> waypoint = waypointService.getAllWaypoints();
+    @GetMapping("/{location}")
+    public ResponseEntity<List<WaypointsEntity>> getAllWaypoints(@PathVariable("location") String location) {
+        List<WaypointsEntity> waypoint = waypointService.getAllWaypointsByLocation(location);
         return new ResponseEntity<>(waypoint, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<WaypointsEntity> getWaypointById(@PathVariable("id") Long id) {
+    @GetMapping("/{location}/{id}")
+    public ResponseEntity<WaypointsEntity> getWaypointById(@PathVariable("location") String location, @PathVariable("id") Long id) {
         WaypointsEntity waypoint = waypointService.getWaypointById(id);
         if (waypoint != null) {
-            return new ResponseEntity<>(waypoint, HttpStatus.OK);
+            if (waypoint.getLocationName().equals(location)) {
+                return new ResponseEntity<>(waypoint, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("?name={name}")
-    public ResponseEntity<WaypointsEntity> getWaypointByName(@PathVariable("name") String name) {
-        WaypointsEntity waypoint = waypointService.getWaypointByName(name);
+    @GetMapping("/id/{id}")
+    public ResponseEntity<WaypointsEntity> getWaypointById(@PathVariable("id") Long id) {
+        WaypointsEntity waypoint = waypointService.getWaypointById(id);
         if (waypoint != null) {
             return new ResponseEntity<>(waypoint, HttpStatus.OK);
         } else {

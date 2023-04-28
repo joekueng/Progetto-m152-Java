@@ -61,4 +61,8 @@ public class WaypointsEntity {
     public int hashCode() {
         return Objects.hash(id, name, lat, lon, description, img, locationName);
     }
+
+    public String getLocationName() {
+        return locationName;
+    }
 }

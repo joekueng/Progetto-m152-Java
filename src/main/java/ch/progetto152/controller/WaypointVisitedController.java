@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/progetto152/waypointsvisited")
+@RequestMapping("/progetto152/waypoint/visited")
 public class WaypointVisitedController {
     private final WaypointVisitedService waypointVisitedService;
 
@@ -26,28 +26,18 @@ public class WaypointVisitedController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<WaypointsVisitedEntity> getWaypointVisitedById(@PathVariable("id") Long id) {
-        WaypointsVisitedEntity waypointVisited = waypointVisitedService.getWaypointById(id);
-        if (waypointVisited != null) {
-            return new ResponseEntity<>(waypointVisited, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping("?userid={id}")
-    public ResponseEntity<WaypointsVisitedEntity> getWaypointVisitedByUserId(@PathVariable("id") Long id) {
-        WaypointsVisitedEntity waypointVisited = waypointVisitedService.getWaypointsVisitedByUserId(id);
-        if (waypointVisited != null) {
-            return new ResponseEntity<>(waypointVisited, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping("?waypointid={id}")
     public ResponseEntity<WaypointsVisitedEntity> getWaypointVisitedByWaypointId(@PathVariable("id") Long id) {
         WaypointsVisitedEntity waypointVisited = waypointVisitedService.getWaypointsVisitedByWaypointId(id);
+        if (waypointVisited != null) {
+            return new ResponseEntity<>(waypointVisited, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<WaypointsVisitedEntity> getWaypointVisitedByUserId(@PathVariable("id") Long id) {
+        WaypointsVisitedEntity waypointVisited = waypointVisitedService.getWaypointsVisitedByUserId(id);
         if (waypointVisited != null) {
             return new ResponseEntity<>(waypointVisited, HttpStatus.OK);
         } else {

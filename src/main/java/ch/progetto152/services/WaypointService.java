@@ -23,13 +23,20 @@ public class WaypointService {
         return waypointRepository.findAll();
     }
 
+    public List<WaypointsEntity> getAllWaypointsByLocation(String locationName) {
+        List<WaypointsEntity> waypoints = waypointRepository.findAllByLocationName(locationName);
+        if (waypoints.isEmpty()) {
+            return null;
+        }else {
+            return waypoints;
+        }
+    }
+
     public WaypointsEntity getWaypointById(Long id) {
         return waypointRepository.findById(id).orElse(null);
     }
 
-    public WaypointsEntity getWaypointByName(String name) {
-        return waypointRepository.findWaypointByName(name).orElse(null);
-    }
+
 
     public WaypointsEntity createWaypoint(WaypointsEntity waypoint) {
         if (errorChecking.checkWaypoint(waypoint)) {

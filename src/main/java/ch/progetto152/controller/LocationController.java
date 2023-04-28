@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/progetto152/locations")
+@RequestMapping("/progetto152/location")
 public class LocationController {
     private final LocationService locationService;
 
@@ -25,9 +25,10 @@ public class LocationController {
         return new ResponseEntity<>(Locations, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<LocationEntity> getLocationById(@PathVariable("id") Long id) {
-        LocationEntity location = locationService.getLocationById(id);
+
+    @GetMapping("/{name}")
+    public ResponseEntity<LocationEntity> getLocationByName(@PathVariable("name") String name) {
+        LocationEntity location = locationService.getLocationByName(name);
         if (location != null) {
             return new ResponseEntity<>(location, HttpStatus.OK);
         } else {
@@ -35,9 +36,9 @@ public class LocationController {
         }
     }
 
-    @GetMapping("?name={name}")
-    public ResponseEntity<LocationEntity> getLocationByName(@PathVariable("location") String name) {
-        LocationEntity location = locationService.getLocationByName(name);
+    @GetMapping("id/{id}")
+    public ResponseEntity<LocationEntity> getLocationById(@PathVariable("id") Long id) {
+        LocationEntity location = locationService.getLocationById(id);
         if (location != null) {
             return new ResponseEntity<>(location, HttpStatus.OK);
         } else {
@@ -54,7 +55,7 @@ public class LocationController {
         return new ResponseEntity<>(createdLocation, HttpStatus.CREATED);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<LocationEntity> updateLocation(@PathVariable("id") Long id, @RequestBody LocationEntity location) {
         LocationEntity location1 = locationService.updateLocation(id, location);
         if (location1 != null) {
@@ -64,7 +65,7 @@ public class LocationController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLocation(@PathVariable("id") Long id) {
         boolean deleted = locationService.deleteLocation(id);
         if (deleted) {

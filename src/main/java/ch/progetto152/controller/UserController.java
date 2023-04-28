@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/progetto152/users")
+@RequestMapping("/progetto152/user")
 public class UserController {
 
     private final UserService userService;
@@ -27,7 +27,7 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long id) {
         UserEntity user = userService.getUserById(id);
         if (user != null) {
@@ -37,17 +37,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("?name={name}")
-    public ResponseEntity<UserEntity> getUserByName(@PathVariable("name") String name) {
-        UserEntity user = userService.getUserByName(name);
-        if (user != null) {
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping("?username={username}")
+    @GetMapping("/{username}")
     public ResponseEntity<UserEntity> getUserByUsername(@PathVariable("username") String username) {
         UserEntity user = userService.getUserByUsername(username);
         if (user != null) {
