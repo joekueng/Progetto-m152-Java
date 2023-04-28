@@ -33,7 +33,7 @@ public class WaypointsEntity {
     @Column(name = "img")
     private String img;
     @Basic
-    @Column(name = "locationName")
+    @Column(name = "location_name")
     private String locationName;
 
     public WaypointsEntity(String name, double lat, double lon, String description, String img, String locationName) {

@@ -21,9 +21,9 @@ create table if not exists Waypoints
     lon          double        not null,
     description  varchar(1000) not null,
     img          varchar(1000) not null,
-    locationName varchar(255)  not null,
+    location_name varchar(255)  not null,
     primary key (id),
-    foreign key (LocationName) references Location (location)
+    foreign key (Location_name) references Location (location)
 );
 
 create table if not exists User
@@ -56,19 +56,19 @@ values ('Locarno', 'TI', 46.170794, 8.799534);
 insert into Location (location, region, lat, lon)
 values ('Ascona', 'TI', 46.157320, 8.773882);
 
-insert into Waypoints (name, lat, lon, description, img, LocationName)
+insert into Waypoints (name, lat, lon, description, img, Location_name)
 values ('Cascata Santa Petronilla', 46.35328215446709, 8.97758397155138, 'A',
         'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', 'Biasca');
-insert into Waypoints (name, lat, lon, description, img, LocationName)
+insert into Waypoints (name, lat, lon, description, img, Location_name)
 values ('Casa Küng', 46.363570208549994,  8.963464722308554, 'Descrizione del punto 2',
         'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
         'Biasca');
-insert into Waypoints (name, lat, lon, description, img, LocationName) values ('Punto 1', 46.123,
+insert into Waypoints (name, lat, lon, description, img, Location_name) values ('Punto 1', 46.123,
                                                                                8.123,
                                                                                'Descrizione del punto 3, un grandissimo',
                                                                                'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
                                                                                'Lugano');
-insert into Waypoints (id, name, lat, lon, description, img, locationName) values (4, 'Punto 2', 46.123, 8.123,
+insert into Waypoints (id, name, lat, lon, description, img, Location_name) values (4, 'Punto 2', 46.123, 8.123,
                                                                                    'Descrizione del punto 4',
                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
                                                                                    'Locarno');

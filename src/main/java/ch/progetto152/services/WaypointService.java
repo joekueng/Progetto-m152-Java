@@ -24,8 +24,8 @@ public class WaypointService {
     }
 
     public List<WaypointsEntity> getAllWaypointsByLocation(String locationName) {
-        List<WaypointsEntity> waypoints = waypointRepository.findAllByLocationName(locationName);
-        if (waypoints.isEmpty()) {
+        List<WaypointsEntity> waypoints = waypointRepository.findAllByLocationName(locationName).orElse(null);
+        if (waypoints.isEmpty() || waypoints == null) {
             return null;
         }else {
             return waypoints;
