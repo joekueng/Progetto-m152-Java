@@ -55,6 +55,7 @@ insert into Location (location, region, lat, lon)
 values ('Locarno', 'TI', 46.170794, 8.799534);
 insert into Location (location, region, lat, lon)
 values ('Ascona', 'TI', 46.157320, 8.773882);
+insert into Location (location, region, lat, lon) values ('Airolo', 'TI', 46.548, 8.591);
 
 insert into Waypoints (name, lat, lon, description, img, Location_name)
 values ('Cascata Santa Petronilla', 46.35328215446709, 8.97758397155138, 'A',
