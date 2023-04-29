@@ -27,7 +27,7 @@ public class WaypointController {
     }
 
     @GetMapping("/{location}/{id}")
-    public ResponseEntity<WaypointsEntity> getWaypointById(@PathVariable("location") String location, @PathVariable("id") Long id) {
+    public ResponseEntity<WaypointsEntity> getWaypoint(@PathVariable("location") String location, @PathVariable("id") Long id) {
         WaypointsEntity waypoint = waypointService.getWaypointById(id);
         if (waypoint != null) {
             if (waypoint.getLocationName().equals(location)) {
