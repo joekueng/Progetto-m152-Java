@@ -65,14 +65,28 @@ values ('Casa Küng', 46.363570208549994,  8.963464722308554, 'Descrizione del p
         'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
         'Biasca');
 insert into Waypoints (name, lat, lon, description, img, Location_name) values ('Punto 1', 46.123,
-                                                                               8.123,
-                                                                               'Descrizione del punto 3, un grandissimo',
-                                                                               'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                                                                               'Lugano');
+                                                                                8.123,
+                                                                                'Descrizione del punto 3, un grandissimo',
+                                                                                'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                                                                                'Lugano');
 insert into Waypoints (id, name, lat, lon, description, img, Location_name) values (4, 'Punto 2', 46.123, 8.123,
-                                                                                   'Descrizione del punto 4',
-                                                                                   'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                                                                                   'Locarno');
+                                                                                    'Descrizione del punto 4',
+                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                                                                                    'Locarno');
+insert into Waypoints (id, name, lat, lon, description, img, location_name) values (5, 'Punto 3', 46.123, 8.123,
+                                                                                    'Descrizione del punto 5',
+                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                                                                                    'Ascona');
+insert into Waypoints (id, name, lat, lon, description, img, location_name) values (6, 'Punto 4', 46.123, 8.123,'Descrizione del punto 6',
+                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                                                                                    'Airolo');
+insert into Waypoints (id, name, lat, lon, description, img, location_name) values (7, 'Punto 5', 46.123, 8.123,
+                                                                                    'Descrizione del punto 7',
+                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                                                                                    'Bellinzona');
+insert into Waypoints (id, name, lat, lon, description, img, location_name) values (8, 'Punto 6', 46.123, 8.123,'Descrizione del punto 8',
+                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                                                                                    'Biasca');
 
 insert into User (name, username, password) values ('Mario Rossi', 'mario.rossi', 'password');
 insert into User (name, username, password) values ('Luca Bianchi', 'luca.bianchi', 'password');
