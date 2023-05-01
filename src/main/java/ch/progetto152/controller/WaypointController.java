@@ -19,6 +19,12 @@ public class WaypointController {
         this.waypointService = waypointService;
     }
 
+    @GetMapping("")
+    public ResponseEntity<List<WaypointsEntity>> getAllWaypoints() {
+        List<WaypointsEntity> waypoint = waypointService.getAllWaypoints();
+        return new ResponseEntity<>(waypoint, HttpStatus.OK);
+    }
+
     @GetMapping("/{location}")
     public ResponseEntity<List<WaypointsEntity>> getAllWaypoints(@PathVariable("location") String location) {
         System.out.println(waypointService.getAllWaypointsByLocation(location));
