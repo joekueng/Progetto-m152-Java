@@ -6,7 +6,7 @@ use Progetto152;
 
 create table if not exists Location
 (
-    location varchar(255) not null unique,
+    location varchar(255) not null unique default '',
     region   varchar(3)   not null,
     lat      double       not null,
     lon      double       not null,
