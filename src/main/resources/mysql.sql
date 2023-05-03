@@ -15,12 +15,12 @@ create table if not exists Location
 
 create table if not exists Waypoints
 (
-    id           int           not null auto_increment,
-    name         varchar(255)  not null,
-    lat          double        not null,
-    lon          double        not null,
-    description  varchar(1000) not null,
-    img          varchar(1000) not null,
+    id            int           not null auto_increment,
+    name          varchar(255)  not null,
+    lat           double        not null,
+    lon           double        not null,
+    description   varchar(1000) not null,
+    img           varchar(1000) not null,
     location_name varchar(255)  not null,
     primary key (id),
     foreign key (Location_name) references Location (location)
@@ -29,9 +29,9 @@ create table if not exists Waypoints
 create table if not exists User
 (
     id       int          not null auto_increment,
-    name     varchar(45)  not null,
     username varchar(100) not null unique,
     password varchar(100) not null,
+    admin    boolean default false,
     primary key (id)
 );
 
@@ -55,39 +55,50 @@ insert into Location (location, region, lat, lon)
 values ('Locarno', 'TI', 46.170794, 8.799534);
 insert into Location (location, region, lat, lon)
 values ('Ascona', 'TI', 46.157320, 8.773882);
-insert into Location (location, region, lat, lon) values ('Airolo', 'TI', 46.548, 8.591);
+insert into Location (location, region, lat, lon)
+values ('Airolo', 'TI', 46.548, 8.591);
 
 insert into Waypoints (name, lat, lon, description, img, Location_name)
 values ('Cascata Santa Petronilla', 46.35328215446709, 8.97758397155138, 'A',
         'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', 'Biasca');
 insert into Waypoints (name, lat, lon, description, img, Location_name)
-values ('Casa Küng', 46.363570208549994,  8.963464722308554, 'Descrizione del punto 2',
+values ('Casa Küng', 46.363570208549994, 8.963464722308554, 'Descrizione del punto 2',
         'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
         'Biasca');
-insert into Waypoints (name, lat, lon, description, img, Location_name) values ('Punto 1', 46.123,
-                                                                                8.123,
-                                                                                'Descrizione del punto 3, un grandissimo',
-                                                                                'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                                                                                'Lugano');
-insert into Waypoints (id, name, lat, lon, description, img, Location_name) values (4, 'Punto 2', 46.123, 8.123,
-                                                                                    'Descrizione del punto 4',
-                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                                                                                    'Locarno');
-insert into Waypoints (id, name, lat, lon, description, img, location_name) values (5, 'Punto 3', 46.123, 8.123,
-                                                                                    'Descrizione del punto 5',
-                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                                                                                    'Ascona');
-insert into Waypoints (id, name, lat, lon, description, img, location_name) values (6, 'Punto 4', 46.123, 8.123,'Descrizione del punto 6',
-                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                                                                                    'Airolo');
-insert into Waypoints (id, name, lat, lon, description, img, location_name) values (7, 'Punto 5', 46.123, 8.123,
-                                                                                    'Descrizione del punto 7',
-                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                                                                                    'Bellinzona');
-insert into Waypoints (id, name, lat, lon, description, img, location_name) values (8, 'Punto 6', 46.123, 8.123,'Descrizione del punto 8',
-                                                                                    'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-                                                                                    'Biasca');
+insert into Waypoints (name, lat, lon, description, img, Location_name)
+values ('Punto 1', 46.123,
+        8.123,
+        'Descrizione del punto 3, un grandissimo',
+        'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+        'Lugano');
+insert into Waypoints (id, name, lat, lon, description, img, Location_name)
+values (4, 'Punto 2', 46.123, 8.123,
+        'Descrizione del punto 4',
+        'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+        'Locarno');
+insert into Waypoints (id, name, lat, lon, description, img, location_name)
+values (5, 'Punto 3', 46.123, 8.123,
+        'Descrizione del punto 5',
+        'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+        'Ascona');
+insert into Waypoints (id, name, lat, lon, description, img, location_name)
+values (6, 'Punto 4', 46.123, 8.123, 'Descrizione del punto 6',
+        'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+        'Airolo');
+insert into Waypoints (id, name, lat, lon, description, img, location_name)
+values (7, 'Punto 5', 46.123, 8.123,
+        'Descrizione del punto 7',
+        'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+        'Bellinzona');
+insert into Waypoints (id, name, lat, lon, description, img, location_name)
+values (8, 'Punto 6', 46.123, 8.123, 'Descrizione del punto 8',
+        'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+        'Biasca');
 
-insert into User (name, username, password) values ('Mario Rossi', 'mario.rossi', 'password');
-insert into User (name, username, password) values ('Luca Bianchi', 'luca.bianchi', 'password');
-insert into User (name, username, password) values ('Giovanni Verdi', 'giovanni.verdi', 'password');
+insert into User (username, password)
+values ('mario.rossi', 'password');
+insert into User (username, password)
+values ('luca.bianchi', 'password');
+insert into User (username, password)
+values ('giovanni.verdi', 'password');
+insert into User (username, password, admin) values ('Joe', 'admin', true);
