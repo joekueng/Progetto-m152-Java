@@ -26,10 +26,37 @@ public class UserEntity {
     @Basic
     @Column(name = "password")
     private String password;
+    @Basic
+    @Column(name = "admin")
+    private Byte admin;
 
     public UserEntity(String name, String username, String password) {
         this.name = name;
         this.username = username;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -48,5 +75,13 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, username, password);
+    }
+
+    public Byte getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Byte admin) {
+        this.admin = admin;
     }
 }
