@@ -103,6 +103,8 @@ insert into User (username, password)
 values ('giovanni.verdi', 'password');
 insert into User (username, password, admin)
 values ('Joe', 'admin', true);
+insert into User (username, password, admin)
+values ('admin', 'admin', true);
 
 insert into Waypoints_visited (user_id, waypoint_id)
 values (1, 1);
