@@ -18,9 +18,6 @@ public class UserEntity {
     @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "name")
-    private String name;
-    @Basic
     @Column(name = "username")
     private String username;
     @Basic
@@ -31,7 +28,6 @@ public class UserEntity {
     private Byte admin;
 
     public UserEntity(String name, String username, String password) {
-        this.name = name;
         this.username = username;
         this.password = password;
     }
@@ -69,12 +65,12 @@ public class UserEntity {
             return false;
         }
         UserEntity that = (UserEntity) o;
-        return id == that.id && Objects.equals(name, that.name) && Objects.equals(username, that.username) && Objects.equals(password, that.password);
+        return id == that.id && Objects.equals(username, that.username) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, username, password);
+        return Objects.hash(id, username, password);
     }
 
     public Byte getAdmin() {

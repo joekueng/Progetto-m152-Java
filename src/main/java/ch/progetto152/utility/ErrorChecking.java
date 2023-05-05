@@ -10,7 +10,6 @@ public class ErrorChecking {
 
     public boolean checkUser(UserEntity user){
         return user != null &&
-                isNotEmpty(user.getName()) &&
                 isNotEmpty(user.getUsername()) &&
                 isNotEmpty(user.getPassword());
     }

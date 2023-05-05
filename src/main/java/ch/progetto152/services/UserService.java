@@ -28,9 +28,6 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public UserEntity getUserByName(String name){
-        return userRepository.findUserByName(name).orElse(null);
-    }
 
     public UserEntity getUserByUsername(String username){
         return userRepository.findUserByUsername(username).orElse(null);
@@ -47,7 +44,6 @@ public class UserService {
     public UserEntity updateUser(Long id, UserEntity user) {
         UserEntity user1 = getUserById(id);
         if (user1 != null) {
-            user1.setName(user.getName());
             user1.setUsername(user.getUsername());
             user1.setPassword(user.getPassword());
             return userRepository.save(user1);
