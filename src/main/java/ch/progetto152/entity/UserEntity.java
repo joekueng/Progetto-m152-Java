@@ -1,16 +1,10 @@
 package ch.progetto152.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 @Table(name = "User", schema = "Progetto152", catalog = "")
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +19,7 @@ public class UserEntity {
     private String password;
     @Basic
     @Column(name = "admin")
-    private Byte admin;
-
-    public UserEntity(String name, String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
+    private int admin;
 
     public int getId() {
         return id;
@@ -56,6 +45,14 @@ public class UserEntity {
         this.password = password;
     }
 
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -65,19 +62,11 @@ public class UserEntity {
             return false;
         }
         UserEntity that = (UserEntity) o;
-        return id == that.id && Objects.equals(username, that.username) && Objects.equals(password, that.password);
+        return id == that.id && admin == that.admin && Objects.equals(username, that.username) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password);
-    }
-
-    public Byte getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Byte admin) {
-        this.admin = admin;
+        return Objects.hash(id, username, password, admin);
     }
 }

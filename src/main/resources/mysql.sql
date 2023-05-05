@@ -31,7 +31,7 @@ create table if not exists User
     id       int          not null auto_increment,
     username varchar(100) not null unique,
     password varchar(100) not null,
-    admin    boolean default false,
+    admin    int(1)       not null default 0,
     primary key (id)
 );
 
@@ -101,7 +101,10 @@ insert into User (username, password)
 values ('luca.bianchi', 'password');
 insert into User (username, password)
 values ('giovanni.verdi', 'password');
-insert into User (username, password, admin) values ('Joe', 'admin', true);
+insert into User (username, password, admin)
+values ('Joe', 'admin', true);
 
-insert into Waypoints_visited (user_id, waypoint_id) values (1,1);
-insert into Waypoints_visited (user_id, waypoint_id) values (2,2);
+insert into Waypoints_visited (user_id, waypoint_id)
+values (1, 1);
+insert into Waypoints_visited (user_id, waypoint_id)
+values (2, 2);

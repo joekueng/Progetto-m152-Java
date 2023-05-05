@@ -53,6 +53,7 @@ public class UserController {
         if(createdUser == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        createdUser.setAdmin(0);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
