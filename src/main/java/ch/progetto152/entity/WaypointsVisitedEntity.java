@@ -15,10 +15,10 @@ import java.util.Objects;
 @IdClass(WaypointsVisitedId.class)
 public class WaypointsVisitedEntity {
     @Id
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private int userId;
     @Id
-    @Column(name = "waypointId")
+    @Column(name = "waypoint_id")
     private int waypointId;
 
     @Override

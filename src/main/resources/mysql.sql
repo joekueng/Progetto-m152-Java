@@ -35,12 +35,12 @@ create table if not exists User
     primary key (id)
 );
 
-create table if not exists WaypointsVisited
+create table if not exists Waypoints_visited
 (
-    userId     int not null,
-    waypointId int not null,
-    foreign key (userId) references User (id),
-    foreign key (waypointId) references Waypoints (id)
+    user_id     int not null,
+    waypoint_id int not null,
+    foreign key (user_id) references User (id),
+    foreign key (waypoint_id) references Waypoints (id)
 );
 
 
@@ -102,3 +102,6 @@ values ('luca.bianchi', 'password');
 insert into User (username, password)
 values ('giovanni.verdi', 'password');
 insert into User (username, password, admin) values ('Joe', 'admin', true);
+
+insert into Waypoints_visited (user_id, waypoint_id) values (1,1);
+insert into Waypoints_visited (user_id, waypoint_id) values (2,2);
