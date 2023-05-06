@@ -25,9 +25,21 @@ public class WaypointVisitedController {
         return new ResponseEntity<>(waypointVisited, HttpStatus.OK);
     }
 
+
+
     @GetMapping("/{id}")
     public ResponseEntity<WaypointsVisitedEntity> getWaypointVisitedByWaypointId(@PathVariable("id") Long id) {
         WaypointsVisitedEntity waypointVisited = waypointVisitedService.getWaypointsVisitedByWaypointId(id);
+        if (waypointVisited != null) {
+            return new ResponseEntity<>(waypointVisited, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/{user}/{id}")
+    public ResponseEntity<Boolean> getWaypointVisitedByWaypointIdAndUserId(@PathVariable("user") Long user, @PathVariable("id") Long id) {
+        Boolean waypointVisited = waypointVisitedService.getWaypointsVisitedByWaypointIdAndUserId(id, user);
         if (waypointVisited != null) {
             return new ResponseEntity<>(waypointVisited, HttpStatus.OK);
         } else {

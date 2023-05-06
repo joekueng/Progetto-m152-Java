@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface WaypointVisitedRepository extends JpaRepository<WaypointsVisitedEntity, Long> {
     Optional<WaypointsVisitedEntity> findWaypointsVisitedEntitiesByUserId(Long id);
     Optional<WaypointsVisitedEntity> findWaypointsVisitedEntitiesByWaypointId(Long id);
+    Optional<WaypointsVisitedEntity> findWaypointsVisitedEntitiesByUserIdAndWaypointId(Long userId, Long waypointId);
 }
