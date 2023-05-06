@@ -1,6 +1,8 @@
 package ch.progetto152.controller;
 
+import ch.progetto152.entity.UserEntity;
 import ch.progetto152.entity.WaypointsVisitedEntity;
+import ch.progetto152.services.UserService;
 import ch.progetto152.services.WaypointVisitedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,9 +16,12 @@ import java.util.List;
 public class WaypointVisitedController {
     private final WaypointVisitedService waypointVisitedService;
 
+    private final UserService userService;
+
     @Autowired
-    public WaypointVisitedController(WaypointVisitedService waypointVisitedService) {
+    public WaypointVisitedController(WaypointVisitedService waypointVisitedService, UserService userService) {
         this.waypointVisitedService = waypointVisitedService;
+        this.userService = userService;
     }
 
     @GetMapping("")
@@ -38,8 +43,9 @@ public class WaypointVisitedController {
     }
 
     @GetMapping("/{user}/{id}")
-    public ResponseEntity<Boolean> getWaypointVisitedByWaypointIdAndUserId(@PathVariable("user") Long userId, @PathVariable("id") Long waypointId) {
-        Boolean waypointVisited = waypointVisitedService.getWaypointsVisitedByWaypointIdAndUserId(waypointId, userId);
+    public ResponseEntity<Boolean> getWaypointVisitedByWaypointIdAndUserId(@PathVariable("user") String username, @PathVariable("id") Long waypointId) {
+        UserEntity user = userService.getUserByUsername(username);
+        Boolean waypointVisited = waypointVisitedService.getWaypointsVisitedByWaypointIdAndUserId(waypointId, (long) user.getId());
         if (waypointVisited == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else if (!waypointVisited) {

@@ -1,5 +1,6 @@
 package ch.progetto152.services;
 
+import ch.progetto152.entity.UserEntity;
 import ch.progetto152.entity.WaypointsVisitedEntity;
 import ch.progetto152.repository.WaypointVisitedRepository;
 import ch.progetto152.utility.ErrorChecking;
