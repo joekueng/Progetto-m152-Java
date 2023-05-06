@@ -35,10 +35,6 @@ public class WaypointVisitedService {
         return waypointVisitedRepository.findWaypointsVisitedEntitiesByWaypointId(id).orElse(null);
     }
 
-    public WaypointsVisitedEntity getWaypointsVisitedByUserIdAndWaypointId(Long userId, Long waypointId) {
-        return waypointVisitedRepository.findWaypointsVisitedEntitiesByUserIdAndWaypointId(userId, waypointId).orElse(null);
-    }
-
     public WaypointsVisitedEntity createWaypoint(WaypointsVisitedEntity waypoint) {
         if (errorChecking.checkWaypointVisited(waypoint)) {
             return waypointVisitedRepository.save(waypoint);
@@ -67,4 +63,12 @@ public class WaypointVisitedService {
     }
 
 
+    public Boolean getWaypointsVisitedByWaypointIdAndUserId(Long waypointId, Long userId) {
+        WaypointsVisitedEntity waypointsVisited =  waypointVisitedRepository.findWaypointsVisitedEntitiesByUserIdAndWaypointId(userId, waypointId).orElse(null);
+        if (waypointsVisited != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
