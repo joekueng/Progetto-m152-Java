@@ -13,9 +13,9 @@ Questa repository fa parte del progetto finale per il modulo125 in particolare s
 2. Eseguire il file ```database.sql``` per creare il database e le tabelle necessarie
 3. Inserire i dati di accesso al database nel file ```application.properties```
 3. Compilare il progetto utilizzando Maven
-```bash mvn install```
+```mvn install```
 4. Eseguire il progetto utilizzando Maven
-```bash mvn spring-boot:run``` oppure configurando run configuration nel vostro IDE 
+```mvn spring-boot:run``` oppure configurando run configuration nel vostro IDE 
 
 L'applicazione sarà quindi disponibile all'indirizzo http://localhost:8080.
 
