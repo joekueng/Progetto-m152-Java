@@ -1,6 +1,6 @@
 # Progetto-m152-Java
 
-Questa repository fa parte del progetto finale per il modulo125 in particolare si tratta del back-end necessario per il corretto funzionamento del front-end ([Progetto-m152-Angular](https://github.com/joekueng/Progetto-m152-Angular)).
+Questa repository fa parte del progetto finale per il modulo152 in particolare si tratta del back-end necessario per il corretto funzionamento del front-end ([Progetto-m152-Angular](https://github.com/joekueng/Progetto-m152-Angular)).
 
 ## Requisiti
 * Java JDK 17 o superiore
