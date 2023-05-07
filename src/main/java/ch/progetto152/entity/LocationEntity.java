@@ -13,7 +13,6 @@ import java.util.Objects;
 @ToString
 @Table(name = "Location", schema = "Progetto152", catalog = "")
 public class LocationEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "location")
     private String location;
