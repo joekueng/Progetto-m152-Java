@@ -10,4 +10,8 @@ import java.util.Optional;
 public interface LocationRepository extends JpaRepository<LocationEntity, Long> {
 
     Optional<LocationEntity> findLocationByLocation(String name);
+
+    Boolean existsByLocation(String name);
+
+    void deleteByLocation(String name);
 }

@@ -49,11 +49,11 @@ public class LocationService {
     }
 
     public boolean deleteLocation(String name) {
-        boolean exists = locationRepository.existsById(id);
+        boolean exists = locationRepository.existsByLocation(name);
         if(!exists){
             return false;
         }
-        locationRepository.deleteByName(name);
+        locationRepository.deleteByLocation(name);
         return true;
     }
 }
