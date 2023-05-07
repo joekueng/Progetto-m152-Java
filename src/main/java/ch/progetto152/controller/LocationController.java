@@ -25,20 +25,9 @@ public class LocationController {
         return new ResponseEntity<>(Locations, HttpStatus.OK);
     }
 
-
     @GetMapping("/{name}")
     public ResponseEntity<LocationEntity> getLocationByName(@PathVariable("name") String name) {
         LocationEntity location = locationService.getLocationByName(name);
-        if (location != null) {
-            return new ResponseEntity<>(location, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping("id/{id}")
-    public ResponseEntity<LocationEntity> getLocationById(@PathVariable("id") Long id) {
-        LocationEntity location = locationService.getLocationById(id);
         if (location != null) {
             return new ResponseEntity<>(location, HttpStatus.OK);
         } else {
@@ -55,9 +44,9 @@ public class LocationController {
         return new ResponseEntity<>(createdLocation, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<LocationEntity> updateLocation(@PathVariable("id") Long id, @RequestBody LocationEntity location) {
-        LocationEntity location1 = locationService.updateLocation(id, location);
+    @PutMapping("/{name}")
+    public ResponseEntity<LocationEntity> updateLocation(@PathVariable("name") String name, @RequestBody LocationEntity location) {
+        LocationEntity location1 = locationService.updateLocation(name, location);
         if (location1 != null) {
             return new ResponseEntity<>(location1, HttpStatus.OK);
         } else {
@@ -65,9 +54,9 @@ public class LocationController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLocation(@PathVariable("id") Long id) {
-        boolean deleted = locationService.deleteLocation(id);
+    @DeleteMapping("/{name}")
+    public ResponseEntity<Void> deleteLocation(@PathVariable("name") String name) {
+        boolean deleted = locationService.deleteLocation(name);
         if (deleted) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {

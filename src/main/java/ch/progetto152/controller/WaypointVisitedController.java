@@ -49,7 +49,7 @@ public class WaypointVisitedController {
         if (waypointVisited == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else if (!waypointVisited) {
-            return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(false, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }

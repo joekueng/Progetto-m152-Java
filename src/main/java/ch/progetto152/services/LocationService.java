@@ -23,10 +23,6 @@ public class LocationService {
         return locationRepository.findAll();
     }
 
-    public LocationEntity getLocationById(Long id) {
-        return locationRepository.findById(id).orElse(null);
-    }
-
     public LocationEntity getLocationByName(String name){
         return locationRepository.findLocationByLocation(name).orElse(null);
     }
@@ -39,8 +35,8 @@ public class LocationService {
         }
     }
 
-    public LocationEntity updateLocation(Long id, LocationEntity Location) {
-        LocationEntity location1 = getLocationById(id);
+    public LocationEntity updateLocation(String name, LocationEntity Location) {
+        LocationEntity location1 = getLocationByName(name);
         if (location1 != null) {
             location1.setLocation(Location.getLocation());
             location1.setRegion(Location.getRegion());
@@ -52,12 +48,12 @@ public class LocationService {
         }
     }
 
-    public boolean deleteLocation(Long id) {
+    public boolean deleteLocation(String name) {
         boolean exists = locationRepository.existsById(id);
         if(!exists){
             return false;
         }
-        locationRepository.deleteById(id);
+        locationRepository.deleteByName(name);
         return true;
     }
 }
