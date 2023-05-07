@@ -52,9 +52,7 @@ VALUES ('Meride', 'TI', 45.9247, 8.9175),
        ('Lugano', 'TI', 46.0031, 8.9536),
        ('Lavertezzo', 'TI', 46.2764, 8.7753),
        ('Orselina', 'TI', 46.1761, 8.8036),
-       ('Airolo', 'TI', 46.5106, 8.5167),
-       ('Carona', 'TI', 46.0117, 8.9106),
-       ('Ligornetto', 'TI', 45.8458, 8.9528);
+       ('Airolo', 'TI', 46.5106, 8.5167);
 
 INSERT INTO Waypoints (name, description, lat, lon, location_name, img)
 VALUES ('Monte San Giorgio',
