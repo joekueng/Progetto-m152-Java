@@ -53,7 +53,7 @@ public class LocationService {
         if(!exists){
             return false;
         }
-        locationRepository.deleteByLocation(name);
+        locationRepository.delete(getLocationByName(name));
         return true;
     }
 }
