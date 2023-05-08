@@ -13,5 +13,4 @@ public interface LocationRepository extends JpaRepository<LocationEntity, Long> 
 
     Boolean existsByLocation(String name);
 
-    void deleteByLocation(String name);
 }
