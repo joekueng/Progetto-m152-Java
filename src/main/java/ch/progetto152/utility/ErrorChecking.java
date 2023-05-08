@@ -6,6 +6,8 @@ import ch.progetto152.entity.UserEntity;
 import ch.progetto152.entity.WaypointsEntity;
 import ch.progetto152.entity.WaypointsVisitedEntity;
 
+
+// This class is used to check if the data received from the client is valid
 public class ErrorChecking {
 
     public boolean checkUser(UserEntity user){

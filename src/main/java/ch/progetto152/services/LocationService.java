@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class LocationService {
 
-    private ErrorChecking errorChecking = new ErrorChecking();
+    private final ErrorChecking errorChecking = new ErrorChecking();
     private final LocationRepository locationRepository;
 
     @Autowired

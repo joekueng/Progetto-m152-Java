@@ -1,6 +1,5 @@
 package ch.progetto152.services;
 
-import ch.progetto152.entity.UserEntity;
 import ch.progetto152.entity.WaypointsVisitedEntity;
 import ch.progetto152.repository.WaypointVisitedRepository;
 import ch.progetto152.utility.ErrorChecking;
@@ -63,13 +62,8 @@ public class WaypointVisitedService {
         return true;
     }
 
-
     public Boolean getWaypointsVisitedByWaypointIdAndUserId(Long waypointId, Long userId) {
         WaypointsVisitedEntity waypointsVisited =  waypointVisitedRepository.findWaypointsVisitedEntitiesByUserIdAndWaypointId(userId, waypointId).orElse(null);
-        if (waypointsVisited != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return waypointsVisited != null;
     }
 }

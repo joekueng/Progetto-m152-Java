@@ -12,6 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/progetto152/waypoint")
 public class WaypointController {
+
+    // Iject the WaypointService instance
     private final WaypointService waypointService;
 
     @Autowired
@@ -19,12 +21,14 @@ public class WaypointController {
         this.waypointService = waypointService;
     }
 
+    // Handle the GET request to get all waypoints
     @GetMapping("")
     public ResponseEntity<List<WaypointsEntity>> getAllWaypoints() {
         List<WaypointsEntity> waypoint = waypointService.getAllWaypoints();
         return new ResponseEntity<>(waypoint, HttpStatus.OK);
     }
 
+    // Handle the GET request to get all waypoints by location
     @GetMapping("/{location}")
     public ResponseEntity<List<WaypointsEntity>> getAllWaypoints(@PathVariable("location") String location) {
         System.out.println(waypointService.getAllWaypointsByLocation(location));
@@ -32,6 +36,8 @@ public class WaypointController {
         return new ResponseEntity<>(waypoint, HttpStatus.OK);
     }
 
+
+    // Handle the GET request to get a specific waypoint by id
     @GetMapping("/{location}/{id}")
     public ResponseEntity<WaypointsEntity> getWaypoint(@PathVariable("location") String location, @PathVariable("id") Long id) {
         WaypointsEntity waypoint = waypointService.getWaypointById(id);
@@ -46,6 +52,7 @@ public class WaypointController {
         }
     }
 
+    // Handle the GET request to get a specific waypoint by id
     @GetMapping("/id/{id}")
     public ResponseEntity<WaypointsEntity> getWaypointById(@PathVariable("id") Long id) {
         WaypointsEntity waypoint = waypointService.getWaypointById(id);
@@ -56,6 +63,7 @@ public class WaypointController {
         }
     }
 
+    // Handle the POST request to create a new waypoint
     @PostMapping("")
     public ResponseEntity<WaypointsEntity> createWaypoint(@RequestBody WaypointsEntity waypoint) {
         WaypointsEntity createdWaypoint = waypointService.createWaypoint(waypoint);
@@ -65,6 +73,7 @@ public class WaypointController {
         return new ResponseEntity<>(createdWaypoint, HttpStatus.CREATED);
     }
 
+    // Handle the PUT request to update an existing waypoint
     @PutMapping("/{id}")
     public ResponseEntity<WaypointsEntity> updateWaypoint(@PathVariable("id") Long id, @RequestBody WaypointsEntity waypoint) {
         WaypointsEntity updatedWaypoint = waypointService.updateWaypoint(id, waypoint);
@@ -75,6 +84,7 @@ public class WaypointController {
         }
     }
 
+    // Handle the DELETE request to delete an existing waypoint
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteWaypoint(@PathVariable("id") Long id) {
         boolean deleted = waypointService.deleteWaypoint(id);

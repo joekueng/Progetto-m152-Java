@@ -12,6 +12,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/progetto152/location")
 public class LocationController {
+
+    // Inject the LocationService
     private final LocationService locationService;
 
     @Autowired
@@ -19,12 +21,14 @@ public class LocationController {
         this.locationService = locationService;
     }
 
+    // Handle GET request to get all locations
     @GetMapping("")
     public ResponseEntity<List<LocationEntity>> getAllLocations() {
         List<LocationEntity> Locations = locationService.getAllLocations();
         return new ResponseEntity<>(Locations, HttpStatus.OK);
     }
 
+    // Handle GET request to get a specific location by name
     @GetMapping("/{name}")
     public ResponseEntity<LocationEntity> getLocationByName(@PathVariable("name") String name) {
         LocationEntity location = locationService.getLocationByName(name);
@@ -35,15 +39,17 @@ public class LocationController {
         }
     }
 
+    // Handle POST request to create a new location
     @PostMapping("")
     public ResponseEntity<LocationEntity> createLocation(@RequestBody LocationEntity location) {
         LocationEntity createdLocation = locationService.createLocation(location);
-        if(createdLocation == null) {
+        if (createdLocation == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(createdLocation, HttpStatus.CREATED);
     }
 
+    // Handle PUT request to update an existing location
     @PutMapping("/{name}")
     public ResponseEntity<LocationEntity> updateLocation(@PathVariable("name") String name, @RequestBody LocationEntity location) {
         LocationEntity location1 = locationService.updateLocation(name, location);
@@ -54,6 +60,7 @@ public class LocationController {
         }
     }
 
+    // Handle DELETE request to delete an existing location by name
     @DeleteMapping("/{name}")
     public ResponseEntity<Void> deleteLocation(@PathVariable("name") String name) {
         boolean deleted = locationService.deleteLocation(name);

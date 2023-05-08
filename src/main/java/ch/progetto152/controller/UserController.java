@@ -14,6 +14,8 @@ import java.util.List;
 @RequestMapping("/progetto152/user")
 public class UserController {
 
+
+    // Inject the UserService
     private final UserService userService;
 
     @Autowired
@@ -21,12 +23,14 @@ public class UserController {
         this.userService = userService;
     }
 
+    // Handle GET request to get all users
     @GetMapping("")
     public ResponseEntity<List<UserEntity>> getAllUsers() {
         List<UserEntity> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    // Handle GET request to get user by id
     @GetMapping("/id/{id}")
     public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long id) {
         UserEntity user = userService.getUserById(id);
@@ -37,6 +41,7 @@ public class UserController {
         }
     }
 
+    // Handle GET request to get user by username
     @GetMapping("/{username}")
     public ResponseEntity<UserEntity> getUserByUsername(@PathVariable("username") String username) {
         UserEntity user = userService.getUserByUsername(username);
@@ -47,16 +52,18 @@ public class UserController {
         }
     }
 
+    // Handle POST request to create a new user
     @PostMapping("")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
         UserEntity createdUser = userService.createUser(user);
-        if(createdUser == null) {
+        if (createdUser == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         createdUser.setAdmin(0);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
+    // Handle PUT request to update an existing user
     @PutMapping("/{id}")
     public ResponseEntity<UserEntity> updateUser(@PathVariable("id") Long id, @RequestBody UserEntity user) {
         UserEntity updatedUser = userService.updateUser(id, user);
@@ -67,6 +74,7 @@ public class UserController {
         }
     }
 
+    // Handle DELETE request to delete an existing user
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         boolean deleted = userService.deleteUser(id);
